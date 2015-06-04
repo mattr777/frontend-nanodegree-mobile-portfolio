@@ -14,6 +14,11 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
 
+## To run this demo
+* The first item to look at is simply the load time of index.html
+* The second item is found by clicking on the "Cam's Pizzeria" link in index.html. This will take you to pizza.html.
+* In pizza.html, the optimizations are related to scrolling the scroll bar and changing the slider under the text "What size pizza would you like?"
+
 ## Changes made to index.html
 1. I noticed an unclosed div element, so I decided to start with the w3 validator. I thought that invalid markup might take a little longer to parse.
 2. Added media tag to print css and async to Google Analytics script.
@@ -28,5 +33,6 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 1. Tried pulling var items = document.querySelectorAll('.mover'); out of updatePositions (which is our hot spot).  Maybe helped a little.
 2. Pulled var pizzasDiv = document.getElementById("randomPizzas"); out of the for loop where the pizzas are appended.  Doesn't seem to matter.
 3. Pulled sin calculation out of item loop in updatePositions.  This dropped updatePositions from 77% to 7% in profiler.  Big change, but might not be done yet.
-4. Reduced the number of math operation in updatePositions.  Not a big improvement.
+4. Reduced the number of math operations in updatePositions.  Not a big improvement.
+5. Pulled a number of computations out of the for loop in changePizzaSizes and got the resize time down to 1.7 ms from approximately 100 ms.
 

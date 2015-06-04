@@ -6,30 +6,6 @@ To get started, check out the repository, inspect the code,
 
 ### Getting started
 
-####Part 1: Optimize PageSpeed Insights score for index.html
-
-Some useful tips to help you get started:
-
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
-
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
-
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
-
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
 ####Part 2: Optimize Frames per Second in pizza.html
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
@@ -48,5 +24,19 @@ You might find the FPS Counter/HUD Display useful in Chrome developer tools desc
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
 
-## Changes made
+## Changes made to index.html
 1. I noticed an unclosed div element, so I decided to start with the w3 validator. I thought that invalid markup might take a little longer to parse.
+2. Added media tag to print css and async to Google Analytics script.
+3. Still at 28 (mobile) and 30 (desktop) for PageSpeed.  I'll optimize the images.
+4. Smaller images moved mobile to 77 and desktop to 90 on PageSpeed.
+5. Downloading fonts to local CSS file moved mobile to 81, desktop to 92.
+6. Removing font definitions for cyrillic, vietnamese, and greek did not help.
+7. Inlining all of style.css moved mobile to 87 and desktop to 94.
+8. Using minified version of perfmatters.js did not change PageSpeed scores.
+
+## Changes made to main.js for pizza.html
+1. Tried pulling var items = document.querySelectorAll('.mover'); out of updatePositions (which is our hot spot).  Maybe helped a little.
+2. Pulled var pizzasDiv = document.getElementById("randomPizzas"); out of the for loop where the pizzas are appended.  Doesn't seem to matter.
+3. Pulled sin calculation out of item loop in updatePositions.  This dropped updatePositions from 77% to 7% in profiler.  Big change, but might not be done yet.
+4. Reduced the number of math operation in updatePositions.  Not a big improvement.
+

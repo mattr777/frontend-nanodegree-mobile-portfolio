@@ -525,7 +525,8 @@ function updatePositions() {
   ];
 
   for (var i = 0; i < slidingPizzas.length; i++) {
-    slidingPizzas[i].style.left = slidingPizzas[i].basicLeft + phase[i%5] + 'px';
+    //slidingPizzas[i].style.left = slidingPizzas[i].basicLeft + phase[i%5] + 'px';
+    slidingPizzas[i].transform.translateX(slidingPizzas[i].basicLeft + phase[i%5] + 'px');
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -543,12 +544,13 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
+  /** Dynamically calculate the number of pizzas based on the size of the viewport.  We were creating too many
+   * pizzas by default and incurring a huge performance penalty. */
   var numRows = window.innerHeight / 100;
-  var viewportWidth = window.innerWidth;
-
-  var numCols = 8;
-  var numPizzas = numRows * numCols;
   var s = 256;
+  var numCols = window.innerWidth / s;
+  var numPizzas = numRows * numCols;
+
   var elem = null;  // Pulled declaration out of for loop per reviewer comment.  Since for loops do not create
                     // a new scope in JavaScript, I wonder if this helps.
   for (var i = 0; i < numPizzas; i++) {

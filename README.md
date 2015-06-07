@@ -37,4 +37,6 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 4. Reduced the number of math operations in updatePositions.  Not a big improvement.
 5. Pulled a number of computations out of the for loop in changePizzaSizes and got the resize time down to 1.7 ms from approximately 100 ms.
 6. Changed calls to querySelector to either getElementById or getElementByClassName as appropriate.
+7. Dynamically calculating the number of pizzas.
+8. Adjusting the pizza location with translateX style instead of writing to left directly.
 

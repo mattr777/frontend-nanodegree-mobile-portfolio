@@ -525,8 +525,8 @@ function updatePositions() {
   ];
 
   for (var i = 0; i < slidingPizzas.length; i++) {
-    //slidingPizzas[i].style.left = slidingPizzas[i].basicLeft + phase[i%5] + 'px';
-    slidingPizzas[i].transform.translateX(slidingPizzas[i].basicLeft + phase[i%5] + 'px');
+    /** Using translate style to improve speed instead of writing to left directly. */
+    slidingPizzas[i].style.transform = 'translateX(' + phase[i%5] + 'px)';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -559,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % numCols) * s;
+    elem.style.left = (i % numCols) * s + 'px';
     elem.style.top = (Math.floor(i / numCols) * s) + 'px';
     document.getElementById("movingPizzas1").appendChild(elem);
   }

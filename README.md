@@ -15,6 +15,7 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
 
 ## To run this demo
+* Open [Matt's home page](http://richards777.com/ "Matt's Home Page") with a web browser
 * The first item to look at is simply the load time of index.html
 * The second item is found by clicking on the "Cam's Pizzeria" link in index.html. This will take you to pizza.html.
 * In pizza.html, the optimizations are related to scrolling the scroll bar and changing the slider under the text "What size pizza would you like?"
